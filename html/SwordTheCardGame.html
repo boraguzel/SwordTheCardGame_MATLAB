@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Sword - The Card Game</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2023-11-26">
+<meta name="DC.source" content="SwordTheCardGame.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Sword - The Card Game</h1>
+<pre class="codeinput">
+<span class="comment">% Print available card types in the deck</span>
+fprintf([<span class="string">'Card types in the'</span> <span class="keyword">...</span>
+    <span class="string">' deck are Hearts, Clubs, Diamonds, Spades\n'</span>]);
+
+<span class="comment">% User inputs for card type and number</span>
+guess = lower(input(<span class="string">'Choose a card type from the deck: '</span>, <span class="string">'s'</span>));
+guess2 = lower(input(<span class="string">'Choose a card number (Ace, 2-10, Jack, Queen, King): '</span>, <span class="string">'s'</span>));
+
+<span class="comment">% Concatenate user's card type and number</span>
+userCard = [guess guess2];
+
+<span class="comment">% Define the deck of cards</span>
+deck = lower({<span class="string">'HeartsAce'</span>, <span class="string">'Hearts2'</span>, <span class="string">'Hearts3'</span>, <span class="string">'Hearts4'</span>, <span class="string">'Hearts5'</span>, <span class="string">'Hearts6'</span>, <span class="string">'Hearts7'</span>, <span class="string">'Hearts8'</span>, <span class="string">'Hearts9'</span>, <span class="string">'Hearts10'</span>, <span class="string">'HeartsJack'</span>, <span class="string">'HeartsQueen'</span>, <span class="string">'HeartsKing'</span>, <span class="keyword">...</span>
+        <span class="string">'SpadesAce'</span>, <span class="string">'Spades2'</span>, <span class="string">'Spades3'</span>, <span class="string">'Spades4'</span>, <span class="string">'Spades5'</span>, <span class="string">'Spades6'</span>, <span class="string">'Spades7'</span>, <span class="string">'Spades8'</span>, <span class="string">'Spades9'</span>, <span class="string">'Spades10'</span>, <span class="string">'SpadesJack'</span>, <span class="string">'SpadesQueen'</span>, <span class="string">'SpadesKing'</span>, <span class="keyword">...</span>
+        <span class="string">'ClubsAce'</span>, <span class="string">'Clubs2'</span>, <span class="string">'Clubs3'</span>, <span class="string">'Clubs4'</span>, <span class="string">'Clubs5'</span>, <span class="string">'Clubs6'</span>, <span class="string">'Clubs7'</span>, <span class="string">'Clubs8'</span>, <span class="string">'Clubs9'</span>, <span class="string">'Clubs10'</span>, <span class="string">'ClubsJack'</span>, <span class="string">'ClubsQueen'</span>, <span class="string">'ClubsKing'</span>, <span class="keyword">...</span>
+        <span class="string">'DiamondsAce'</span>, <span class="string">'Diamonds2'</span>, <span class="string">'Diamonds3'</span>, <span class="string">'Diamonds4'</span>, <span class="string">'Diamonds5'</span>, <span class="string">'Diamonds6'</span>, <span class="string">'Diamonds7'</span>, <span class="string">'Diamonds8'</span>, <span class="string">'Diamonds9'</span>, <span class="string">'Diamonds10'</span>, <span class="string">'DiamondsJack'</span>, <span class="string">'DiamondsQueen'</span>, <span class="string">'DiamondsKing'</span>});
+
+<span class="comment">% Shuffle the deck</span>
+shuffledDeck = deck(randperm(52));
+
+<span class="comment">% Game loop</span>
+<span class="keyword">for</span> i = 1:52
+    <span class="comment">% Check if the current card matches user's guess</span>
+    isMatch = strcmp(userCard, shuffledDeck{i});
+
+    <span class="comment">% Determine whose turn it is</span>
+    <span class="keyword">if</span> mod(i, 2) == 1
+        <span class="comment">% User's turn</span>
+        <span class="keyword">if</span> isMatch
+            fprintf(<span class="string">'Your turn and the card is %s\n'</span>, shuffledDeck{i});
+            fprintf(<span class="string">'YOU WIN!\n'</span>);
+            <span class="keyword">break</span>;
+        <span class="keyword">else</span>
+            fprintf(<span class="string">'Your turn and the card is %s\n'</span>, shuffledDeck{i});
+            fprintf(<span class="string">'Card must be %s\n'</span>, userCard);
+            input(<span class="string">'Hit Enter to continue: '</span>);
+        <span class="keyword">end</span>
+    <span class="keyword">else</span>
+        <span class="comment">% Opponent's turn</span>
+        <span class="keyword">if</span> isMatch
+            fprintf(<span class="string">'Opponents turn and the card is %s\n'</span>, shuffledDeck{i});
+            fprintf(<span class="string">'YOU LOSE!\n'</span>);
+            <span class="keyword">break</span>;
+        <span class="keyword">else</span>
+            fprintf(<span class="string">'Opponents turn and the card is %s\n'</span>, shuffledDeck{i});
+            fprintf(<span class="string">'Card must be %s\n'</span>, userCard);
+            input(<span class="string">'Hit Enter to continue: '</span>);
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Sword - The Card Game
+
+% Print available card types in the deck
+fprintf(['Card types in the' ...
+    ' deck are Hearts, Clubs, Diamonds, Spades\n']);
+
+% User inputs for card type and number
+guess = lower(input('Choose a card type from the deck: ', 's'));
+guess2 = lower(input('Choose a card number (Ace, 2-10, Jack, Queen, King): ', 's'));
+
+% Concatenate user's card type and number
+userCard = [guess guess2];
+
+% Define the deck of cards
+deck = lower({'HeartsAce', 'Hearts2', 'Hearts3', 'Hearts4', 'Hearts5', 'Hearts6', 'Hearts7', 'Hearts8', 'Hearts9', 'Hearts10', 'HeartsJack', 'HeartsQueen', 'HeartsKing', ...
+        'SpadesAce', 'Spades2', 'Spades3', 'Spades4', 'Spades5', 'Spades6', 'Spades7', 'Spades8', 'Spades9', 'Spades10', 'SpadesJack', 'SpadesQueen', 'SpadesKing', ...
+        'ClubsAce', 'Clubs2', 'Clubs3', 'Clubs4', 'Clubs5', 'Clubs6', 'Clubs7', 'Clubs8', 'Clubs9', 'Clubs10', 'ClubsJack', 'ClubsQueen', 'ClubsKing', ...
+        'DiamondsAce', 'Diamonds2', 'Diamonds3', 'Diamonds4', 'Diamonds5', 'Diamonds6', 'Diamonds7', 'Diamonds8', 'Diamonds9', 'Diamonds10', 'DiamondsJack', 'DiamondsQueen', 'DiamondsKing'});
+
+% Shuffle the deck
+shuffledDeck = deck(randperm(52));
+
+% Game loop
+for i = 1:52
+    % Check if the current card matches user's guess
+    isMatch = strcmp(userCard, shuffledDeck{i});
+    
+    % Determine whose turn it is
+    if mod(i, 2) == 1
+        % User's turn
+        if isMatch
+            fprintf('Your turn and the card is %s\n', shuffledDeck{i});
+            fprintf('YOU WIN!\n');
+            break;
+        else
+            fprintf('Your turn and the card is %s\n', shuffledDeck{i});
+            fprintf('Card must be %s\n', userCard);
+            input('Hit Enter to continue: ');
+        end
+    else
+        % Opponent's turn
+        if isMatch
+            fprintf('Opponents turn and the card is %s\n', shuffledDeck{i});
+            fprintf('YOU LOSE!\n');
+            break;
+        else
+            fprintf('Opponents turn and the card is %s\n', shuffledDeck{i});
+            fprintf('Card must be %s\n', userCard);
+            input('Hit Enter to continue: ');
+        end
+    end
+end
+
+
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>
